@@ -89,13 +89,11 @@ center.addEventListener("mouseenter", function(){
 
 
 greetingellipsis.addEventListener("mouseenter", function(){
-    console.log('nag  appear na yung ellipsis')
+    // console.log('nag  appear na yung ellipsis')
 
     greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
-    
-        console.log('owky')
+        // console.log('owky')
         if (editname.style.display === "none") {
-            console.log('ha?')
             greetingellipsis.style.display = "flex";
             editname.style.display = "flex";
         } else if(editname.style.display === "flex"){

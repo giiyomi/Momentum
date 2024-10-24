@@ -854,10 +854,6 @@ input::placeholder{
 }
 
 
-
-
-
-
 @media (max-height: 900px) and (min-height:700px) {
     #time{
         font-size: 120px;
@@ -865,21 +861,20 @@ input::placeholder{
     #center{
         position: relative;
     }
+    #greeting{
+        font-size: 30px;
+        position: relative;
+    }
     #greetingellipsis{
         position: absolute;
         right: 0 !important;
         transform: translateX(100%);
-    }
-    #greeting{
-        font-size: 30px;
-        position: relative;
     }
 
     #editname{
         position: absolute;
         top: 40px !important;
         right: 0 !important;
-        
         transform: translateX(65%);
     }
 
