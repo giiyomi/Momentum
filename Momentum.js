@@ -84,6 +84,9 @@ greetingellipsis.addEventListener("mouseenter", function(){
 
 if (isTouchDevice && screenWidth < 800) {
     // Gawing clickable ang ellipsis para sa touch devices
+
+    greetingellipsis.style.display === 'flex'
+    
     center.addEventListener("click", function(){
         if (greetinginput.style.display === "flex" || editnameClicked === false) {
             greetingellipsis.style.display = "none";
