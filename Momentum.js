@@ -21,8 +21,6 @@ const numberOfToDo = 0;
 const bottomRight = document.getElementById("bottom-right");
 const bubbleTextTodo = document.getElementById("bubbletexttodo");
 const todo = document.getElementById("todo");
-const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-const screenWidth = window.innerWidth;
 let todoForm = document.getElementById("todoForm");
 let inputTodo = document.getElementById("inputTodo");
 let todoList = document.getElementById("todolist");
@@ -81,50 +79,33 @@ greetingellipsis.addEventListener("mouseenter", function(){
 });
 
 
+let screenWidth = window.screen.width;
 
-if (isTouchDevice && screenWidth < 800) {
-    // Gawing clickable ang ellipsis para sa touch devices
-
-    greetingellipsis.style.display === 'flex'
-    
-    center.addEventListener("click", function(){
-        if (greetinginput.style.display === "flex" || editnameClicked === false) {
-            greetingellipsis.style.display = "none";
-        } else {
-            greetingellipsis.style.display = "flex";
-        }
-    });
-
-    greetingellipsis.addEventListener("click", function () { 
-        if (editname.style.display == "none") {
-            greetingellipsis.style.display = "flex";
-            editname.style.display = "flex";
-        } else if(editname.style.display == "flex"){
-            greetingellipsis.style.display = "flex";
-            editname.style.display = "none";
-        }
-    });
-} else {
-    // Para sa mga non-touch devices (desktop at iba pa), gamitin ang hover
-    center.addEventListener("mouseenter", function(){
-        if (greetinginput.style.display === "flex" || editnameClicked === false) {
-            greetingellipsis.style.display = "none";
-        } else {
-            greetingellipsis.style.display = "flex";
-        }
-    });
-
+center.addEventListener("mouseenter", function(){
+    if (greetinginput.style.display === "flex" || editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
+        greetingellipsis.style.display = "none";
+    } else {
+        greetingellipsis.style.display = "flex";
+    }
     center.addEventListener("mouseleave", function(){
-        if (greetingellipsis.style.display === "flex") {
-            greetingellipsis.style.display = "none";
+        if (greetingellipsis.style.display === "flex") { //ellipsisClicked sya dati
+
+
+            
             editname.style.display = "none";
+
+            console.log(screenWidth)
+
+            if (screenWidth < 600) {
+                console.log('less than 600')
+                greetingellipsis.style.display = "flex";
+            }else{
+                console.log('more than 600')
+                greetingellipsis.style.display = "none";
+            }
         }
     });
-}
-
-
-
-
+});
 
 greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
     if (editname.style.display == "none") {
