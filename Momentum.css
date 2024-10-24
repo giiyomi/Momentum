@@ -1,0 +1,909 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+#screen {
+    background: url("https://t3.ftcdn.net/jpg/06/26/16/58/360_F_626165821_8RRKhypLWBlAfrYW5HZ9zCMLJjPumc8r.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color:rgb(255, 255, 255);
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    flex: 20%;
+}
+
+#top-left {
+    background: radial-gradient(farthest-corner at 50px 20px,
+    rgba(0,0,0,.2) 20%,
+    rgba(0, 0, 0, .15),
+    rgba(0,0,0,.05),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0)
+    );
+    width: 300px;
+    height: 100px;
+    padding-top: 1%;
+    padding-left: 1%;
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10%;
+}
+
+#top-right {
+    background: radial-gradient(farthest-corner at 250px 20px,
+    rgba(0,0,0,.2) 20%,
+    rgba(0, 0, 0, .15),
+    rgba(0,0,0,.05),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0)
+    );
+    width: 300px;
+    height: 100px;
+    font-size: 26px;
+    padding-top: 1%;
+    padding-right: 1%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#gap {
+    flex: 24%;
+}
+
+main {
+    position: relative;
+    flex: 60%;
+    margin-top: 0px;
+    box-sizing: border-box;
+    gap: 75px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+#center {
+    box-sizing: border-box;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    background: radial-gradient( 70% 75%,
+        rgba(0,0,0,.3) 30%,
+        rgba(0,0,0,.2),
+        rgba(0,0,0,.1),
+        rgba(0,0,0,0),
+        rgba(0,0,0,0),
+        rgba(0,0,0,0)
+    );
+}
+
+#center:hover{
+    cursor: default;
+}
+
+#time {
+    font-size: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: -10px;
+}
+
+#greeting {
+    width: 100%;
+    margin-top: 30px;
+    font-size: 55px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+}
+#greetingtext{
+    padding-left:2%;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 2px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    text-wrap: nowrap;
+    position: absolute;
+    font-size: 90%;
+}
+
+
+#greetingellipsis {
+    position: absolute;
+    display: none;
+    transform: translateX(250px);
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 5px;
+}
+#editname{
+    position:absolute;
+    border-radius: 5px;
+    width: 80px;
+    position: absolute;
+    position: relative;
+    background-color: rgb(253,253,253);
+    font-size: 15px;
+    transform: translate(320px, -2px);
+    white-space: nowrap;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#editnametext{
+    padding: 5px;
+    position: absolute;
+    z-index: 999;
+    color: black;
+    border-radius: 2px;
+    background-color: rgb(253,253,253);
+    font-size: 15px;
+}
+#editname::before{
+    content: "";
+    position: absolute;
+    transform: rotate(43deg) translateX(-29px) translateY(27px);
+    border: 6px solid;
+    color: rgb(253,253,253);
+    background-color: rgb(253,253,253);
+    outline: none;
+}
+#editname:hover{
+    cursor:pointer;
+}
+
+#greetingname{
+    margin:0px;
+    padding:0px;
+}
+#greetinginput{
+    display:none;
+    width: 80px;
+    font-size: 55px;
+    color:rgb(255,255,255);
+    background: transparent;/* pwede ding none */
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0;
+}
+
+#bottom {
+    width: 60%;
+    height: 60%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        rgba(0,0,0,.2) 30%,
+        rgba(0,0,0,.2),
+        rgba(0,0,0,.1),
+        rgba(0,0,0,0),
+        rgba(0,0,0,0),
+        rgba(0,0,0,0)
+    );
+}
+#goal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: 31px;
+}
+#goaltext{
+    display: flex;
+    justify-content: center;
+    right: 0;
+    left:0;
+    width: 80%;
+}
+#inputGoal{
+    right: 0;
+    left:0;
+    display:flex;
+    width: 55%;
+    font-size: 35px;
+    color:rgb(255,255,255);
+    background: transparent;/* pwede ding none */
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#goallist{
+    display: none;
+    flex-direction: column;
+    font-size: 21px;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#goallist h3{
+    margin: 5%;
+}
+
+#todaygoal{
+    font-size: 35px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex:5%
+}
+
+#bottom-left {
+    background: radial-gradient(farthest-corner at 20px 100px,
+    rgba(0,0,0,.2) 20%,
+    rgba(0, 0, 0, .15),
+    rgba(0,0,0,.05),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0)
+    );
+    height: 100px;
+    width: 20%;
+    font-size: 16px;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    display: flex;
+    align-items: flex-end;
+    gap: 20%;
+}
+
+#bottom-right  {
+    position: relative;
+    background: radial-gradient(farthest-corner at 250px 100px,
+    rgba(0,0,0,.2) 20%,
+    rgba(0, 0, 0, .15),
+    rgba(0,0,0,.05),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0)
+    );
+    height: 100px;
+    width: 20%;
+    font-size: 16px;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+    gap: 20%;
+    justify-self: flex-end;
+    align-self: flex-end;
+
+}
+#bubbletexttodo{
+    width:280px;
+    min-height: 60px;
+    background-color: rgb(253,253,253);
+    position: absolute;
+    transform:  translateX(10px) translateY(-45px);
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+
+}
+#bubbletexttodo::after{
+    content: "";
+    width:15px;
+    height: 15px;
+    background-color: rgb(253,253,253);
+    background-color: rgb(253,253,253);
+    transform: rotate(40deg) translateX(180px) translateY(-145px);
+    z-index: 0;
+}
+
+
+#todolist {
+    z-index: 999;
+    color: black;
+    font-size: 1rem;
+    width:280px;
+    padding-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+#todolist p{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+#todolist label{
+    padding-left: 10px;
+}
+
+
+#todoForm{
+    display: none;
+    justify-content: flex-end;
+    text-align: flex-end;
+    align-content: flex-end;
+    outline: none;
+    height: 15%;
+    position: absolute;
+    transform: translateX(5px) translateY(-60px);
+    border-radius: 30px;
+
+}
+#inputTodo{
+    display: flex;
+    width: 265px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 5px 20px 120px;
+}
+
+
+#todo{
+    padding: 2%;
+    text-wrap: nowrap;
+}
+#todo:hover{
+    cursor: pointer;
+}
+
+#bottom-middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    background: radial-gradient(80% 80%,
+    rgba(0,0,0,.2) 20%,
+    rgba(0, 0, 0, .15),
+    rgba(0,0,0,.05),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0),
+    rgba(0,0,0,0)
+    );
+}
+#quote {
+    height: 100%;
+    font-size: 16px ;
+    padding-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 2%;
+
+}
+
+#personaliseQuote{
+    width: max-content;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+#inputQuote{
+    min-width: 30ch;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(253,253,253, .7);
+    font-size: 20px;
+    color: rgb(255,255,255);
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+input::placeholder{
+    color: rgba(255,255,255,.6);
+}
+
+#botmidToolTip{
+    position: relative;
+    display: flex;
+    width: 0px;
+    height: 0px;
+}
+
+#quoteEllipsis{
+    position: absolute;
+    transform: translateX(200%) translateY(-22px);
+    font-size: 20px;
+    border-radius: 30px;
+    width:25px;
+    height: 25px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+}
+
+#tooltiptext{
+    width: 145px;
+    background-color: rgb(253,253,253);
+    transform: translateY(-90px) translateX(35px);
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    color: black;
+    z-index: 999;
+}
+#tooltiptext::before{
+    content: " ";
+    position: absolute;
+    display: flex;
+    transform: rotate(43deg) translateX(39px) translateY(17px);
+    border: 10px solid;
+    color: rgb(253,253,253);
+    background-color: rgb(253,253,253);
+    outline: none;
+    z-index: 0;
+}
+#tooltiptext:hover{
+    cursor: pointer;
+}
+
+#refresh, #personalise{
+    font-size: 15px;
+    padding: 2px 15px;
+    width: 100%;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding-inline: 10%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+#personalise{
+    margin: 0px 0px;
+    margin-bottom: 5px;
+}
+#refresh{
+    margin: 0px 0px;
+    margin-top: 5px;
+}
+
+
+
+@media (max-width: 1300px) and (min-width:1000px){
+    #inputGoal{
+        width: 80%;
+    }
+}
+
+
+
+@media (max-width: 1000px) and (min-width:700px) {
+    #time{
+        font-size: 135px;
+    }
+    #greeting{
+        font-size: 48px;
+    }
+    #goal{
+        font-size: 28px;
+    }
+    #inputGoal{
+        width:90%;
+    }
+    #goallist{
+        font-size:20px;
+    }
+    #todaygoal {
+        font-size:28px;
+    }
+    #quote{
+        padding: 0px;
+    }
+    #bottom-middle{
+
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #botmidToolTip{
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }#quoteEllipsis{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    #tooltiptext{
+        transform: translateX(100px) translateY(0px);
+    }
+    #tooltiptext::before{
+        transform: rotate(43deg) translateX(5px) translateY(15px);
+    }
+    #bubbletexttodo{
+        transform:  translateX(0px) translateY(-45px);
+    }
+    #todoForm{
+        transform: translateX(-5px) translateY(-60px);
+    }
+    #gap {
+        flex: 15%;
+    }
+}
+
+@media (max-width: 700px) and (min-width:600px) {
+    #time{
+        font-size: 120px;
+    }
+    #greeting{
+        font-size: 40px;
+    }
+    #goal{
+        font-size: 28px;
+    }
+    #inputGoal{
+        width:70%;
+    }
+    #form div{
+        font-size:21px;
+    }
+    #bottom-middle{
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #quote{
+        padding: 0px;
+    }
+    #botmidToolTip{
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+    #quoteEllipsis{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    #tooltiptext{
+        transform: translateX(100px) translateY(0px);
+    }
+    #tooltiptext::before{
+        transform: rotate(43deg) translateX(5px) translateY(15px);
+    }
+    #gap {
+        flex: 5%;
+    }
+    #bubbletexttodo{
+        transform:  translateX(0px) translateY(-45px);
+    }
+    #todoForm{
+        transform: translateX(-5px) translateY(-60px);
+    }
+}
+
+@media (max-width: 600px) and (min-width:500px) {
+    #time{
+        font-size: 100px;
+    }
+    #greeting{
+        font-size: 35px;
+    }
+    #goal{
+        font-size: 24px;
+    }
+    #inputGoal{
+        width:100%;
+    }
+    #form div{
+        font-size:16px;
+    }
+
+    #bottom-middle{
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #quote{
+        padding: 0px;
+    }
+    #botmidToolTip{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    #quoteEllipsis{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+    }
+    #tooltiptext{
+        transform: translateX(100px) translateY(0px);
+    }
+    #tooltiptext::before{
+        transform: rotate(43deg) translateX(5px) translateY(15px);
+    }
+    #gap{
+        display: none;
+    }
+    #bubbletexttodo{
+        transform:  translateX(0px) translateY(-45px);
+    }
+    #todoForm{
+        transform: translateX(-5px) translateY(-60px);
+    }
+}
+
+@media (max-width: 500px) and (min-width:400px) {
+    #time{
+        font-size: 80px;
+    }
+    #greeting{
+        font-size: 28px;
+    }
+    #goal{
+        font-size: 19px;
+    }
+    #inputGoal{
+        width:100%;
+    }
+    #form div{
+        font-size:15px;
+    }
+    #bottom-middle{
+
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #quote{
+        padding: 0px;
+    }
+    #botmidToolTip{
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+    #quoteEllipsis{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    #tooltiptext{
+        transform: translateX(100px) translateY(0px);
+    }
+    #tooltiptext::before{
+        transform: rotate(43deg) translateX(5px) translateY(15px);
+    }
+    #gap{
+        display: none;
+    }
+
+    #bubbletexttodo{
+        transform:  translateX(0px) translateY(-45px);
+    }
+    #todoForm{
+        transform: translateX(-5px) translateY(-60px);
+    }
+    #inputQuote{
+        min-width: 20ch;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(253,253,253, .7);
+        font-size: 20px;
+        color: rgb(255,255,255);
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-content: center;
+    }
+    #inputQuote::placeholder{
+        font-size: 16px;
+        color: rgba(255,255,255,.6);
+    }
+}
+
+@media (max-width: 400px) and (min-width:270px) {
+    #time{
+        font-size: 50px;
+    }
+    #greeting{
+        font-size: 24px;
+    }
+    #goal{
+        font-size: 15px;
+    }
+    #inputGoal{
+        width:100%;
+    }
+    #form div{
+        font-size:13px;
+    }
+    #bottom-middle{
+
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #quote{
+        padding: 0px;
+    }
+    #botmidToolTip{
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+    #quoteEllipsis{
+        position: static;
+        height: auto;
+        transform: translate(0px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    #tooltiptext{
+        transform: translateX(100px) translateY(0px);
+    }
+    #tooltiptext::before{
+        transform: rotate(43deg) translateX(5px) translateY(15px);
+    }
+    #bubbletexttodo{
+        transform:  translateX(0px) translateY(-45px);
+    }
+    #todoForm{
+        transform: translateX(-5px) translateY(-60px);
+    }
+    #gap{
+        display: none;
+    }
+
+}
+
+
+
+
+
+
+@media (max-height: 800px) and (min-height:700px) {
+    #time{
+        font-size: 120px;
+    }
+    #greeting{
+        font-size: 44px;
+    }
+    #goal{
+        font-size: 28px;
+    }
+    #goallist{
+        font-size:20px;
+    }
+    #todaygoal {
+        font-size:28px;
+    }
+}
+
+
+@media (max-height: 700px) and (min-height:600px) {
+    #time{
+        font-size: 120px;
+    }
+    #greeting{
+        font-size: 40px;
+    }
+    #goal{
+        font-size: 28px;
+    }
+}
+@media (max-height: 750px) and (min-height:500px) {
+    #time{
+        font-size: 100px;
+    }
+    #greeting{
+        font-size: 30px;
+    }
+    #goal{
+        font-size: 20px;
+    }
+}
+
+@media (max-height: 500px) and (min-height:400px) {
+    #time{
+        font-size: 90px;
+    }
+    #greeting{
+        font-size: 28px;
+    }
+    #goal{
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+

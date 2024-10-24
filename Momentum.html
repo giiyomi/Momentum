@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Momentum</title>
+  <link href="Momentum.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+</head>
+
+<body>
+  <div id="screen">
+    
+  <header>
+    <div id="top-left">
+      <div id="links">
+        <!-- Links -->
+      </div>
+      <div id="focus">
+        <!-- Focus -->
+      </div>
+    </div>
+    <div id="top-right">
+      <div>
+        <!-- Temperature -->
+      </div>
+    </div>
+  </header>
+
+  <span id="gap">
+  </span>
+
+  <main>
+    <div id="center">
+      <div id="time">
+
+      </div>
+
+      <div id="greeting">
+        <div id="greetingtext">
+          Greetings!
+        </div>
+        <i class="fa-solid fa-ellipsis" id="greetingellipsis"></i>
+        <div id="editname">
+          <p id="editnametext">Edit Name</p>
+        </div>
+        <form id="greetingname">
+          <input type="text" id="greetinginput" maxlength="20" required>
+        </form>
+      </div>
+      
+    </div>
+
+    <div id="bottom">
+      <div id="goal">
+        What is your main goal for today? 
+      </div>
+      <form id="goaltext">
+        <input type="text" id="inputGoal" maxlength="70" required>
+      </form>
+      <div id="goallist"> 
+        <h3>TODAY</h3>
+        <div id="todaygoal">
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+      <div id="bottom-left">
+        <div id="moutain">
+          <!-- Mountain -->
+        </div>
+      </div>
+
+      <div id="bottom-middle">
+        <div id="quote">
+          <form id="personaliseQuote">
+            <input type="text" id="inputQuote" placeholder="Input your personalise quote here." required>
+          </form>
+        </div>
+        <div id="botmidToolTip">
+          <i class="fa-solid fa-ellipsis" id="quoteEllipsis"><!--need na nasa loob yung tooltip text at yung dalawang p para hindi sila gagalaw-->
+          </i>
+          <div id="tooltiptext">
+            <p id="refresh">Refresh Quote</p>
+            <p id="personalise">Personalise Quote</p> 
+          </div>
+        </div>
+      </div>
+
+      <div id="bottom-right">
+        <div  id="bubbletexttodo">
+          <div id="todolist">
+            <p>Tasks for today</p>
+          </div>
+        </div>
+
+        <form id="todoForm">
+          <input type="text" id="inputTodo" placeholder = "Input here your tasks now!" maxlength="50" required>
+        </form>
+        <div id="todo">
+          To-Do
+        </div>
+      </div>
+  </footer>
+
+  </div>
+  <script src="Momentum.js"></script>
+</body>
+
+</html>
+
