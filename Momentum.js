@@ -78,9 +78,6 @@ greetingellipsis.addEventListener("mouseenter", function(){
     });
 });
 
-
-let screenWidth = window.screen.width;
-
 center.addEventListener("mouseenter", function(){
     if (greetinginput.style.display === "flex" || editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
         greetingellipsis.style.display = "none";
@@ -89,20 +86,17 @@ center.addEventListener("mouseenter", function(){
     }
     center.addEventListener("mouseleave", function(){
         if (greetingellipsis.style.display === "flex") { //ellipsisClicked sya dati
-
-
-            
             editname.style.display = "none";
 
-            console.log(screenWidth)
+            // console.log(screenWidth)
 
-            if (screenWidth < 600) {
-                console.log('less than 600')
-                greetingellipsis.style.display = "flex";
-            }else{
-                console.log('more than 600')
-                greetingellipsis.style.display = "none";
-            }
+            // if (screenWidth < 600) {
+            //     console.log('less than 600')
+            //     greetingellipsis.style.display = "flex";
+            // }else{
+            //     console.log('more than 600')
+            //     greetingellipsis.style.display = "none";
+            // }
         }
     });
 });
