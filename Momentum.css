@@ -800,7 +800,7 @@ input::placeholder{
         font-size:13px;
     }
     #bottom-middle{
-
+        width: max-content;
         position: static;
         display: flex;
         flex-direction: column-reverse;
@@ -808,6 +808,14 @@ input::placeholder{
     #quote{
         padding: 0px;
     }
+
+    .quoteContainer{
+        height: 50%;
+        width: max-content;
+        max-width: 200px;
+        text-wrap: wrap !important;
+    }
+
     #botmidToolTip{
         position: static;
         display: flex;

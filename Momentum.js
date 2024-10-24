@@ -21,6 +21,8 @@ const numberOfToDo = 0;
 const bottomRight = document.getElementById("bottom-right");
 const bubbleTextTodo = document.getElementById("bubbletexttodo");
 const todo = document.getElementById("todo");
+const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+const screenWidth = window.innerWidth;
 let todoForm = document.getElementById("todoForm");
 let inputTodo = document.getElementById("inputTodo");
 let todoList = document.getElementById("todolist");
@@ -71,27 +73,55 @@ if (hour >= 0 && hour < 12) {
 
 greetingtext.innerText = greetingMeridiem;
 
-center.addEventListener("mouseenter", function(){
-    if (greetinginput.style.display === "flex" || editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
-        greetingellipsis.style.display = "none";
-    } else {
-        greetingellipsis.style.display = "flex";
-    }
-    center.addEventListener("mouseleave", function(){
-        if (greetingellipsis.style.display === "flex") { //ellipsisClicked sya dati
-            greetingellipsis.style.display = "none";
-            editname.style.display = "none";
-        }
-    });
-});
-
-
 greetingellipsis.addEventListener("mouseenter", function(){
     greetingellipsis.style.background = 'rgba(245, 245, 245, 0.3)';
     greetingellipsis.addEventListener("mouseleave", function(){
         greetingellipsis.style.background = "none";
     });
 });
+
+
+
+if (isTouchDevice && screenWidth < 800) {
+    // Gawing clickable ang ellipsis para sa touch devices
+    center.addEventListener("click", function(){
+        if (greetinginput.style.display === "flex" || editnameClicked === false) {
+            greetingellipsis.style.display = "none";
+        } else {
+            greetingellipsis.style.display = "flex";
+        }
+    });
+
+    greetingellipsis.addEventListener("click", function () { 
+        if (editname.style.display == "none") {
+            greetingellipsis.style.display = "flex";
+            editname.style.display = "flex";
+        } else if(editname.style.display == "flex"){
+            greetingellipsis.style.display = "flex";
+            editname.style.display = "none";
+        }
+    });
+} else {
+    // Para sa mga non-touch devices (desktop at iba pa), gamitin ang hover
+    center.addEventListener("mouseenter", function(){
+        if (greetinginput.style.display === "flex" || editnameClicked === false) {
+            greetingellipsis.style.display = "none";
+        } else {
+            greetingellipsis.style.display = "flex";
+        }
+    });
+
+    center.addEventListener("mouseleave", function(){
+        if (greetingellipsis.style.display === "flex") {
+            greetingellipsis.style.display = "none";
+            editname.style.display = "none";
+        }
+    });
+}
+
+
+
+
 
 greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
     if (editname.style.display == "none") {
@@ -291,6 +321,7 @@ let randomiser = Math.floor(Math.random() * quoteList.length);
 let randomQuote = quoteList[randomiser].Quote;
 let randomVerse = quoteList[randomiser].Verse;
 let quoteDiv = document.createElement("div");
+quoteDiv.className = 'quoteContainer'
 let verseDiv = document.createElement("div");
 
 quoteDiv.textContent = randomQuote;
