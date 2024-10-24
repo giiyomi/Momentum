@@ -858,12 +858,45 @@ input::placeholder{
 
 
 
-@media (max-height: 800px) and (min-height:700px) {
+@media (max-height: 900px) and (min-height:700px) {
     #time{
         font-size: 120px;
     }
+    #center{
+        position: relative;
+    }
+    #greetingellipsis{
+        position: absolute;
+        right: 0 !important;
+        transform: translateX(100%);
+    }
     #greeting{
-        font-size: 44px;
+        font-size: 30px;
+        position: relative;
+    }
+
+    #editname{
+        position: absolute;
+        top: 40px !important;
+        right: 0 !important;
+        
+        transform: translateX(65%);
+    }
+
+    #editname::before{
+        border: 5px solid white;
+        transform: translateX(2px) translateY(-13px) rotate(45deg);
+    }
+
+    #greetingname div{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        align-content: flex-end;
+    }
+
+    #greetinginput{
+        font-size: 31px;
     }
     #goal{
         font-size: 28px;
@@ -881,9 +914,37 @@ input::placeholder{
     #time{
         font-size: 120px;
     }
-    #greeting{
-        font-size: 40px;
+    #center{
+        position: relative;
     }
+    #greetingellipsis{
+        left: 0;
+    }
+    #greeting{
+        font-size: 30px;
+    }
+
+    #editname{
+        top: 40px !important;
+        right: 80% !important;
+    }
+
+    #editname::before{
+        transform: translateX(10px) translateY(-13px) rotate(45deg);
+    }
+
+    #greetingname div{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        align-content: flex-end;
+    }
+
+    #greetinginput{
+        font-size: 31px;
+    }
+    
+    
     #goal{
         font-size: 28px;
     }
@@ -892,8 +953,35 @@ input::placeholder{
     #time{
         font-size: 100px;
     }
+
+    #center{
+        position: relative;
+    }
+    #greetingellipsis{
+        left: 0;
+    }
     #greeting{
         font-size: 30px;
+    }
+
+    #editname{
+        top: 40px !important;
+        right: 80% !important;
+    }
+
+    #editname::before{
+        transform: translateX(10px) translateY(-13px) rotate(45deg);
+    }
+
+    #greetingname div{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        align-content: flex-end;
+    }
+
+    #greetinginput{
+        font-size: 31px;
     }
     #goal{
         font-size: 20px;

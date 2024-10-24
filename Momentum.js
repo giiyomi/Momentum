@@ -71,45 +71,47 @@ if (hour >= 0 && hour < 12) {
 
 greetingtext.innerText = greetingMeridiem;
 
-greetingellipsis.addEventListener("mouseenter", function(){
-    greetingellipsis.style.background = 'rgba(245, 245, 245, 0.3)';
-    greetingellipsis.addEventListener("mouseleave", function(){
-        greetingellipsis.style.background = "none";
-    });
-});
-
 center.addEventListener("mouseenter", function(){
-    if (greetinginput.style.display === "flex" || editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
+
+    console.log('dumaan dito')
+    if (editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
         greetingellipsis.style.display = "none";
     } else {
         greetingellipsis.style.display = "flex";
     }
     center.addEventListener("mouseleave", function(){
         if (greetingellipsis.style.display === "flex") { //ellipsisClicked sya dati
+            // greetingellipsis.style.display = "none";
             editname.style.display = "none";
-
-            // console.log(screenWidth)
-
-            // if (screenWidth < 600) {
-            //     console.log('less than 600')
-            //     greetingellipsis.style.display = "flex";
-            // }else{
-            //     console.log('more than 600')
-            //     greetingellipsis.style.display = "none";
-            // }
         }
     });
 });
 
-greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
-    if (editname.style.display == "none") {
-        greetingellipsis.style.display = "flex";
-        editname.style.display = "flex";
-    } else if(editname.style.display == "flex"){
-        greetingellipsis.style.display = "flex";
-        editname.style.display = "none";
-    }
+
+greetingellipsis.addEventListener("mouseenter", function(){
+    console.log('nag  appear na yung ellipsis')
+
+    greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
+    
+        console.log('owky')
+        if (editname.style.display === "none") {
+            console.log('ha?')
+            greetingellipsis.style.display = "flex";
+            editname.style.display = "flex";
+        } else if(editname.style.display === "flex"){
+            greetingellipsis.style.display = "flex";
+            editname.style.display = "none";
+        }
+    });
+
+
+    greetingellipsis.style.background = 'rgba(245, 245, 245, 0.3)';
+    greetingellipsis.addEventListener("mouseleave", function(){
+        greetingellipsis.style.background = "none";
+    });
 });
+
+
 
 editname.addEventListener("click", function(){
     if(editnameClicked){
