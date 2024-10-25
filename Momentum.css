@@ -893,26 +893,12 @@ input::placeholder{
     .greetingellipsisContainer{
         height: 100%;
         width: 100%;
+        max-width: 280px;
         min-width: 280px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-
-    .greetingellipsisContainer{
-        width: 100%;
-        min-width: 300px;
-    }
-
-    .greetingellipsisContainer{
-        height: 100%;
-        width: 100%;
-        max-width: 260px;
-        min-width: 260px;
     }
 
     #editname{
-        transform: translateY(40px) translateX(115px) !important;
+        transform: translateY(40px) translateX(120px) !important;
     }
 
     #editname::before{
@@ -1005,34 +991,14 @@ input::placeholder{
 }
 
 
-/* @media (max-height: 900px) and (min-height:700px) {
+@media (max-height: 900px) and (min-height:700px) {
     #time{
         font-size: 120px;
     }
     #center{
         position: relative;
     }
-    #greeting{
-        font-size: 30px;
-        position: relative;
-    }
-    #greetingellipsis{
-        position: absolute;
-        right: 0 !important;
-        transform: translateX(100%);
-    }
-
-    #editname{
-        position: absolute;
-        top: 40px !important;
-        right: 0 !important;
-        transform: translateX(65%);
-    }
-
-    #editname::before{
-        border: 5px solid white;
-        transform: translateX(2px) translateY(-13px) rotate(45deg);
-    }
+ 
 
     #greetingname div{
         display: flex;
@@ -1053,30 +1019,18 @@ input::placeholder{
     #todaygoal {
         font-size:28px;
     }
-} */
+}
 
 
-/* @media (max-height: 700px) and (min-height:600px) {
+@media (max-height: 700px) and (min-height:600px) {
     #time{
         font-size: 120px;
     }
     #center{
         position: relative;
     }
-    #greetingellipsis{
-        left: 0;
-    }
     #greeting{
         font-size: 30px;
-    }
-
-    #editname{
-        top: 40px !important;
-        right: 80% !important;
-    }
-
-    #editname::before{
-        transform: translateX(10px) translateY(-13px) rotate(45deg);
     }
 
     #greetingname div{
@@ -1094,29 +1048,15 @@ input::placeholder{
     #goal{
         font-size: 28px;
     }
-} */
-/* @media (max-height: 750px) and (min-height:500px) {
+}
+
+@media (max-height: 750px) and (min-height:500px) {
     #time{
         font-size: 100px;
     }
 
     #center{
         position: relative;
-    }
-    #greetingellipsis{
-        left: 0;
-    }
-    #greeting{
-        font-size: 30px;
-    }
-
-    #editname{
-        top: 40px !important;
-        right: 80% !important;
-    }
-
-    #editname::before{
-        transform: translateX(10px) translateY(-13px) rotate(45deg);
     }
 
     #greetingname div{
@@ -1132,7 +1072,7 @@ input::placeholder{
     #goal{
         font-size: 20px;
     }
-} */
+} 
 
 @media (max-height: 500px) and (min-height:400px) {
     #time{
