@@ -954,6 +954,7 @@ input::placeholder{
         height: 50%;
         width: max-content;
         max-width: 200px;
+        padding-top: 10px;
         text-wrap: wrap !important;
     }
 
