@@ -1056,7 +1056,7 @@ input::placeholder{
     }
 
     #refresh,  #personalise{
-        width: max-content;
+        width: 100%;
     }
 
     #tooltiptext p{
