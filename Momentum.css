@@ -885,6 +885,10 @@ input::placeholder{
 }
 
 @media (max-width: 400px) {
+    header{
+        flex: 15%;
+    }
+
     #time{
         letter-spacing: 1px;
         font-size: 50px;
@@ -922,6 +926,10 @@ input::placeholder{
         position: static;
         display: flex;
         flex-direction: column-reverse;
+    }
+
+    footer{
+        flex: 10%;
     }
     #quote{
         padding: 0px;
