@@ -2,6 +2,7 @@ const middle = document.getElementById("time");
 const greeting = document.getElementById("greeting");
 const screen = document.getElementById("screen");
 
+const greetingellipsisContainer = document.querySelector('.greetingellipsisContainer')
 const greetingellipsis = document.getElementById("greetingellipsis");
 const goal = document.getElementById("goal");
 const editname = document.getElementById("editname");
@@ -90,29 +91,28 @@ center.addEventListener("mouseenter", function(){
 
 greetingellipsis.addEventListener("mouseenter", function(){
     // console.log('nag  appear na yung ellipsis')
-
-    greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
-        // console.log('owky')
-        if (editname.style.display === "none") {
-            greetingellipsis.style.display = "flex";
-            editname.style.display = "flex";
-        } else if(editname.style.display === "flex"){
-            greetingellipsis.style.display = "flex";
-            editname.style.display = "none";
-        }
-    });
-
-
     greetingellipsis.style.background = 'rgba(245, 245, 245, 0.3)';
     greetingellipsis.addEventListener("mouseleave", function(){
         greetingellipsis.style.background = "none";
     });
 });
 
+greetingellipsis.addEventListener("click", function () { //once ellipsis is clicked,
+    // console.log('owky')
+    editname.style.display === "flex"
+    ? (editname.style.display = "none")
+    : (editname.style.display = "flex")
+    
+});
+
 
 
 editname.addEventListener("click", function(){
+    
+
     if(editnameClicked){
+        
+        greetingellipsisContainer.style.display = "none"
         greeting.style.transition = "1.5s ease";
         greetingtext.style.transition = "1.5s ease";
 

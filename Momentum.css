@@ -135,12 +135,25 @@ main {
     font-size: 90%;
 }
 
+.greetingellipsisContainer{
+    height: 100%;
+    width: 100%;
+    max-width: 700px;
+    min-width: 700px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
 #greetingellipsis {
     position: absolute;
     /* display: none; */
+    top: 0;
+    left: 80%;
     display: flex;
-    transform: translateX(250px);
+    transform: translateX(100%) translateY(-50%);
     font-size: 20px;
     border-radius: 30px;
     padding: 5px;
@@ -150,7 +163,6 @@ main {
     border-radius: 5px;
     width: 80px;
     position: absolute;
-    position: relative;
     background-color: rgb(253,253,253);
     font-size: 15px;
     transform: translate(320px, -2px);
@@ -414,7 +426,6 @@ footer {
 #quote {
     height: 100%;
     font-size: 16px ;
-    padding-top: 1%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -531,13 +542,42 @@ input::placeholder{
 
 
 
-@media (max-width: 1000px) and (min-width:700px) {
+@media (max-width: 1000px) and (min-width:800px) {
     #time{
         font-size: 135px;
     }
     #greeting{
         font-size: 48px;
     }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 700px;
+        min-width: 700px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    
+    #greetingellipsis {
+        position: absolute;
+        /* display: none; */
+        top: 0;
+        left: 80%;
+        display: flex;
+        transform: translateX(100%) translateY(-50%);
+        font-size: 20px;
+        border-radius: 30px;
+        padding: 5px;
+    }
+    #editname{
+        width: 80px;
+        transform: translate(320px, -2px);
+    }
+
     #goal{
         font-size: 28px;
     }
@@ -566,7 +606,9 @@ input::placeholder{
         align-items: center;
         align-content: center;
         text-align: center;
-    }#quoteEllipsis{
+    }
+    
+    #quoteEllipsis{
         position: static;
         height: auto;
         transform: translate(0px);
@@ -592,13 +634,29 @@ input::placeholder{
     }
 }
 
-@media (max-width: 700px) and (min-width:600px) {
+@media (max-width: 800px) and (min-width:600px) {
     #time{
         font-size: 120px;
     }
+
     #greeting{
+        width: 100%;
         font-size: 40px;
+        position: relative;
     }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 500px;
+        min-width: 500px;
+    }
+
+    
+    #editname{
+        transform: translateY(-2px) translateX(260px) !important;
+    }
+
     #goal{
         font-size: 28px;
     }
@@ -658,6 +716,22 @@ input::placeholder{
     #greeting{
         font-size: 35px;
     }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 400px;
+        min-width: 400px;
+    }
+
+    #editname{
+        transform: translateY(40px) translateX(157px) !important;
+    }
+
+    #editname::before{
+        transform: translateX(5px) translateY(-10px) rotate(45deg);    
+    }
+
     #goal{
         font-size: 24px;
     }
@@ -714,6 +788,29 @@ input::placeholder{
     #greeting{
         font-size: 28px;
     }
+    .greetingellipsisContainer{
+        width: 100%;
+        min-width: 300px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 300px;
+        min-width: 300px;
+    }
+
+    #editname{
+        transform: translateY(40px) translateX(127px) !important;
+    }
+
+    #editname::before{
+        transform: translateX(5px) translateY(-10px) rotate(45deg);    
+    }
+
     #goal{
         font-size: 19px;
     }
@@ -785,13 +882,43 @@ input::placeholder{
     }
 }
 
-@media (max-width: 400px) and (min-width:270px) {
+@media (max-width: 400px) {
     #time{
         font-size: 50px;
     }
     #greeting{
         font-size: 24px;
     }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        min-width: 280px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .greetingellipsisContainer{
+        width: 100%;
+        min-width: 300px;
+    }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 260px;
+        min-width: 260px;
+    }
+
+    #editname{
+        transform: translateY(40px) translateX(115px) !important;
+    }
+
+    #editname::before{
+        transform: translateX(5px) translateY(-10px) rotate(45deg);    
+    }
+
     #goal{
         font-size: 15px;
     }
@@ -853,8 +980,32 @@ input::placeholder{
 
 }
 
+@media (max-width: 370px) and (min-width:300px) {
 
-@media (max-height: 900px) and (min-height:700px) {
+    .greetingellipsisContainer{
+        width: 100%;
+        min-width: 300px;
+    }
+
+    .greetingellipsisContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        min-width: 250px;
+    }
+
+    #editname{
+        transform: translateY(40px) translateX(112px) !important;
+    }
+
+    #editname::before{
+        transform: translateX(5px) translateY(-10px) rotate(45deg);    
+    }
+  
+}
+
+
+/* @media (max-height: 900px) and (min-height:700px) {
     #time{
         font-size: 120px;
     }
@@ -902,10 +1053,10 @@ input::placeholder{
     #todaygoal {
         font-size:28px;
     }
-}
+} */
 
 
-@media (max-height: 700px) and (min-height:600px) {
+/* @media (max-height: 700px) and (min-height:600px) {
     #time{
         font-size: 120px;
     }
@@ -943,8 +1094,8 @@ input::placeholder{
     #goal{
         font-size: 28px;
     }
-}
-@media (max-height: 750px) and (min-height:500px) {
+} */
+/* @media (max-height: 750px) and (min-height:500px) {
     #time{
         font-size: 100px;
     }
@@ -981,7 +1132,7 @@ input::placeholder{
     #goal{
         font-size: 20px;
     }
-}
+} */
 
 @media (max-height: 500px) and (min-height:400px) {
     #time{
