@@ -166,29 +166,33 @@ greetinginput.addEventListener("input", function(){
     }
 });
 
-
 const handleGreetingInputKeydown = (event) => {
     editnameClicked = false;
 
-    if (!grtngNameLclStrge){
-
-        if (event.key === "Enter" && this.value.trim() !== "") { // Ensure there's no space
-            localStorage.setItem('nameForGreeting', this.value);
-            event.preventDefault(); // Prevent page refresh
-
-            this.style.display = "none";
+    if (!grtngNameLclStrge) {
+        if (event.key === "Enter") {
+            // Check if the input is empty or only whitespace
+            if (event.target.value.trim() === "") {
+                event.preventDefault(); // Prevent refresh if input is empty
+                return;
+            }
+            // Proceed with saving the value if input is not empty
+            event.preventDefault();
+            greetinginput.style.display = "none";
 
             let dotDiv = document.createElement("div");
-            dotDiv.textContent = this.value.trim(); // Remove leading/trailing spaces
-            greetingname.insertBefore(dotDiv, greetinginput.nextSibling); // Add the input value as new div
-            this.value = ""; // Reset input value
+            dotDiv.textContent = event.target.value.trim(); // Remove leading/trailing spaces
+            greetingname.insertBefore(dotDiv, greetinginput.nextSibling);
+            event.target.value = ""; // Reset input value
             dotDiv.style.display = "flex";
             dotDiv.style.whiteSpace = "nowrap";
-            ellipsis.style.display = "none"; // Hide ellipsis
+            greetingellipsis.style.display = "none"; // Hide ellipsis
+            
+            localStorage.setItem('nameForGreeting', dotDiv.textContent);
         }
     } else {
         let dotDiv = document.createElement("div");
-        dotDiv.textContent = grtngNameLclStrge
+        dotDiv.textContent = grtngNameLclStrge;
         greetingname.insertBefore(dotDiv, greetinginput.nextSibling);
         dotDiv.style.display = "flex";
         dotDiv.style.whiteSpace = "nowrap";
