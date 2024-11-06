@@ -45,7 +45,7 @@
         </div>
         
         <form id="greetingname">
-          <input type="text" id="greetinginput" maxlength="20" required>
+          <input type="text" id="greetinginput" autocomplete="off" maxlength="20" required>
         </form>
         
         <div class="greetingellipsisContainer">
@@ -63,7 +63,7 @@
         What is your main goal for today? 
       </div>
       <form id="goaltext">
-        <input type="text" id="inputGoal" maxlength="70" required>
+        <input type="text" name='goaltext' id="inputGoal" maxlength="70" autocomplete="off" required/>
       </form>
       <div id="goallist"> 
         <h3>TODAY</h3>
@@ -105,7 +105,7 @@
         </div>
 
         <form id="todoForm">
-          <input type="text" id="inputTodo" placeholder = "Input here your tasks now!" maxlength="50" required>
+          <input type="text" id="inputTodo" autocomplete="off" placeholder = "Input here your tasks now!" maxlength="50" required/>
         </form>
         <div id="todo">
           To-Do
