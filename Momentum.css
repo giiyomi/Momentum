@@ -279,7 +279,17 @@ main {
     letter-spacing: 1px;
 }
 
+.main-goal-fadeaway{
+    animation: fadngAway-maingoal 1.5s ease-in-out forwards;
+}
 
+@keyframes fadngAway-maingoal {
+    from{
+        opacity: 1;
+    }to{
+        opacity: 0;
+    }
+}
 
 footer {
     display: flex;
@@ -534,7 +544,7 @@ input::placeholder{
 
 
 
-@media (max-width: 1300px) and (min-width:1000px){
+@media (max-width: 1300px){
     #inputGoal{
         width: 80%;
     }
@@ -542,7 +552,7 @@ input::placeholder{
 
 
 
-@media (max-width: 1000px) and (min-width:800px) {
+@media (max-width: 1000px) {
     #time{
         font-size: 135px;
     }
@@ -634,7 +644,7 @@ input::placeholder{
     }
 }
 
-@media (max-width: 800px) and (min-width:600px) {
+@media (max-width: 800px) {
     #time{
         font-size: 120px;
     }
@@ -708,7 +718,7 @@ input::placeholder{
     }
 }
 
-@media (max-width: 600px) and (min-width:500px) {
+@media (max-width: 600px) {
     #time{
         font-size: 100px;
     }
@@ -956,6 +966,9 @@ input::placeholder{
         max-width: 200px;
         padding-top: 10px;
         text-wrap: wrap !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #inputQuote::placeholder{
@@ -974,6 +987,7 @@ input::placeholder{
         text-align: center;
     }
     #quoteEllipsis{
+        display: flex;
         padding: 4px 5px;
         position: static;
         height: auto;
@@ -1001,7 +1015,7 @@ input::placeholder{
 
 }
 
-@media (max-width: 370px) and (min-width:300px) {
+@media (max-width: 370px) {
 
     .greetingellipsisContainer{
         width: 100%;
@@ -1070,7 +1084,11 @@ input::placeholder{
 }
 
 
-@media (max-height: 900px) and (min-height:700px) {
+@media (max-height: 900px) {
+    main{
+        flex:30%
+    }
+
     #time{
         font-size: 120px;
     }
@@ -1090,13 +1108,33 @@ input::placeholder{
         font-size: 31px;
     }
     #goal{
-        font-size: 28px;
+        font-size: 24px;
     }
+
+    #inputGoal{
+        margin-top: 15%;
+        font-size: 1.5rem;
+    }
+
     #goallist{
         font-size:20px;
     }
     #todaygoal {
         font-size:28px;
+        gap: 5px;
+    }
+
+    #todaygoal label{
+        font-size: 20px;
+    }
+
+    #todaygoal input{
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    #quote{
+        
     }
 }
 

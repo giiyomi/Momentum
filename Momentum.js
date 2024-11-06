@@ -2,8 +2,8 @@ const middle = document.getElementById("time");
 const greeting = document.getElementById("greeting");
 const screen = document.getElementById("screen");
 
-const greetingellipsisContainer = document.querySelector('.greetingellipsisContainer')
-const greetingellipsis = document.getElementById("greetingellipsis");
+let greetingellipsisContainer = document.querySelector('.greetingellipsisContainer')
+let greetingellipsis = document.getElementById("greetingellipsis");
 const goal = document.getElementById("goal");
 const editname = document.getElementById("editname");
 const editnametext = document.getElementById("editnametext");
@@ -17,7 +17,7 @@ const goaltext = document.getElementById("goaltext");
 const goallist = document.getElementById("goallist");
 const inputGoal = document.getElementById("inputGoal");
 const todaygoal = document.getElementById("todaygoal");
-const numberOfToDo = 0;
+let numberOfToDo = 0;
 
 const bottomRight = document.getElementById("bottom-right");
 const bubbleTextTodo = document.getElementById("bubbletexttodo");
@@ -39,6 +39,10 @@ let refresh = document.getElementById("refresh");
 let personalise = document.getElementById("personalise");
 let personaliseQuote = document.getElementById("personaliseQuote");
 let inputQuote = document.getElementById("inputQuote");
+let grtngNameLclStrge = localStorage.getItem('nameForGreeting')
+let todoListLclStrge = localStorage.getItem('todoList')
+
+
 
 setInterval(() => {  
     var removeRemidian = window.matchMedia("(max-width: 800px)");
@@ -107,12 +111,31 @@ greetingellipsis.addEventListener("click", function () { //once ellipsis is clic
 
 
 
-editname.addEventListener("click", function(){
-    
+function handleEditNameClick() {
 
-    if(editnameClicked){
-        
-        greetingellipsisContainer.style.display = "none"
+    if(!grtngNameLclStrge){
+        if (editnameClicked) {
+            greetingellipsisContainer.style.display = "none";
+            greeting.style.transition = "1.5s ease";
+            greetingtext.style.transition = "1.5s ease";
+
+            greeting.style.marginTop = "5px";
+            greetingtext.style.position = "static";
+            greetingellipsis.style.display = "none";
+            editname.style.display = "none";
+            greetingname.style.display = "flex";
+            greetinginput.style.display = "flex";
+            greetingname.style.paddingLeft = "9px";
+
+            greetingtext.innerText = `${greetingtext.innerText.slice(0, -1)}, `;
+
+            let dotDiv = document.createElement("div"); // create new div element
+            dotDiv.textContent = "."; // add a dot inside the new div
+            greetingname.appendChild(dotDiv); // append the dotDiv inside greetingname
+            greetingname.insertBefore(dotDiv, greetinginput.nextSibling); // insert the dotDiv after greetinginput
+        }
+    } else {
+        greetingellipsisContainer.style.display = "none";
         greeting.style.transition = "1.5s ease";
         greetingtext.style.transition = "1.5s ease";
 
@@ -121,18 +144,16 @@ editname.addEventListener("click", function(){
         greetingellipsis.style.display = "none";
         editname.style.display = "none";
         greetingname.style.display = "flex";
-        greetinginput.style.display = "flex";
+        greetinginput.style.display = "none";
         greetingname.style.paddingLeft = "9px";
 
+        greetingtext.innerText = `${greetingtext.innerText.slice(0, -1)}, `;
 
-        greetingtext.innerText = `${greetingtext.innerText.slice(0,-1)}, `;
-
-        let dotDiv = document.createElement("div"); // create ng bagong div element 
-        dotDiv.textContent = "."; //nilagyan ko ng . sa loob ng bago kong div
-        greetingname.appendChild(dotDiv); //need ko iconnect sa loob ng greetingname yung dotdiv
-        greetingname.insertBefore(dotDiv, greetinginput.nextSibling); //nilagay ko after ng greetinginput
     }
-});
+}
+
+editname.addEventListener("click", handleEditNameClick);
+
 
 greetinginput.addEventListener("input", function(){
     let numberOfCharacters = this.value.length;
@@ -145,32 +166,57 @@ greetinginput.addEventListener("input", function(){
     }
 });
 
-greetinginput.addEventListener("keydown", function(pressEnter){
+
+const handleGreetingInputKeydown = (event) => {
     editnameClicked = false;
 
-    if (pressEnter.key === "Enter" && this.value.trim() !== "") { //dapat ang makukuha sa trim is "" or walang space
-        pressEnter.preventDefault(); // turo ni mikee pra hindi magrefresh
-        this.style.display = "none";
+    if (!grtngNameLclStrge){
 
+        if (event.key === "Enter" && this.value.trim() !== "") { // Ensure there's no space
+            localStorage.setItem('nameForGreeting', this.value);
+            event.preventDefault(); // Prevent page refresh
+
+            this.style.display = "none";
+
+            let dotDiv = document.createElement("div");
+            dotDiv.textContent = this.value.trim(); // Remove leading/trailing spaces
+            greetingname.insertBefore(dotDiv, greetinginput.nextSibling); // Add the input value as new div
+            this.value = ""; // Reset input value
+            dotDiv.style.display = "flex";
+            dotDiv.style.whiteSpace = "nowrap";
+            ellipsis.style.display = "none"; // Hide ellipsis
+        }
+    } else {
         let dotDiv = document.createElement("div");
-        dotDiv.textContent = this.value.trim(); // para sigurado na walang space sa loob
-        greetingname.insertBefore(dotDiv, greetinginput.nextSibling); // nilagay ko sa loob ng greetingname yung greetinginput
-        this.value = ""; //
+        dotDiv.textContent = grtngNameLclStrge
+        greetingname.insertBefore(dotDiv, greetinginput.nextSibling);
         dotDiv.style.display = "flex";
         dotDiv.style.whiteSpace = "nowrap";
-        ellipsis.style.display = "none"
+    }
+}
 
-        }
-});
+greetinginput.addEventListener("keydown", handleGreetingInputKeydown);
+
+
+grtngNameLclStrge && handleEditNameClick()
+grtngNameLclStrge && handleGreetingInputKeydown()
+
+
 
 goaltext.addEventListener("keydown",function (pressEnter) {
     if (pressEnter.key === "Enter" && inputGoal.value.trim() !== "") {
+
+
+        let charLengthChecker = inputGoal.value.length >= 20 ? inputGoal.value.slice(0,17) + "..." : inputGoal.value
+
+        console.log(charLengthChecker)
+
         pressEnter.preventDefault();
         inputGoal.style.display = "none";
         goal.style.display = "none";
         goallist.style.display = "flex"
         let label = document.createElement("label");
-        label.textContent = inputGoal.value;
+        label.textContent = charLengthChecker;
         label.setAttribute("for", `id${numberOfToDo}`);
         label.style.whiteSpace = "nowrap";
 
@@ -192,10 +238,23 @@ goaltext.addEventListener("keydown",function (pressEnter) {
             let label = document.querySelector(`label[for="${checkbox.id}"]`);
             if (checkbox.checked) {
                 label.style.textDecoration = "line-through";
-            } else {
-                label.style.textDecoration = "none";
+
+                goallist.classList.add('main-goal-fadeaway')
+
+                setTimeout(() => {
+                    goallist.style.display  = 'none'
+                    inputGoal.style.display = 'flex'
+                    goal.style.display = 'flex'
+                    mainDiv.remove()
+                    goallist.classList.remove('main-goal-fadeaway')
+                }, 1500);
+
             }
         });
+
+        if (label.innerHTML.length <= 20) {
+
+        }
 
         mainDiv.appendChild(todo);
         mainDiv.appendChild(label);
@@ -238,7 +297,9 @@ bottomRight.addEventListener("mouseleave", function(){
     greetingellipsis = "none";
 })
 
-todoForm.addEventListener("keydown", function (pressEnter) {
+
+const handleSaveTodo = (pressEnter) => {
+
     if (pressEnter.key === "Enter" && inputTodo.value.trim() !== "" && repitition < maxTodos) {
         pressEnter.preventDefault();
 
@@ -257,8 +318,16 @@ todoForm.addEventListener("keydown", function (pressEnter) {
         todo1.addEventListener("change", function(checkEvent) {
             let checkbox = checkEvent.target;
             let label1 = document.querySelector(`label[for="${checkbox.id}"]`);
+
             if (checkbox.checked) {
                 label1.style.textDecoration = "line-through";
+
+                mainDiv.classList.add('main-goal-fadeaway')
+
+                setTimeout(() => {
+                    mainDiv.classList.remove('main-goal-fadeaway')
+                    mainDiv.remove()
+                }, 1500);
             } else {
                 label1.style.textDecoration = "none";
             }
@@ -266,34 +335,83 @@ todoForm.addEventListener("keydown", function (pressEnter) {
 
         mainDiv.appendChild(todo1);
         mainDiv.appendChild(label1);
+
+        localStorage.setItem('todoList', mainDiv)
+
         todoList.appendChild(mainDiv);
         repitition++;
         inputTodo.value = "";
     }
-});
+
+};
+
+todoForm.addEventListener("keydown", handleSaveTodo)
+
+
 
 let quoteList = [
     {
-        Quote:"The Lord is on my side; I will not fear.",
-        Verse:"Psalm 118:6"
+        Quote: "The Lord is on my side; I will not fear.",
+        Verse: "Psalm 118:6"
     },
     {
-        Quote:"Draw near to God, and he will draw near to you.",
-        Verse:"James 4:8"
+        Quote: "Draw near to God, and he will draw near to you.",
+        Verse: "James 4:8"
     },
     {
-        Quote:"Blessed is the one who trusts in the Lord.",
-        Verse:"Jeremiah 17:7"
+        Quote: "Blessed is the one who trusts in the Lord.",
+        Verse: "Jeremiah 17:7"
     },
     {
-        Quote:"In all things, give thanks.",
-        Verse:"1 Thessalonians 5:18"
+        Quote: "In all things, give thanks.",
+        Verse: "1 Thessalonians 5:18"
     },
     {
-        Quote:"So much to be grateful for.",
-        Verse:"Psalm 23"
-    }    
-]
+        Quote: "So much to be grateful for.",
+        Verse: "Psalm 23"
+    },
+    {
+        Quote: "The Lord is my shepherd; I shall not want.",
+        Verse: "Psalm 23:1"
+    },
+    {
+        Quote: "I can do all things through Christ who strengthens me.",
+        Verse: "Philippians 4:13"
+    },
+    {
+        Quote: "For I know the plans I have for you, declares the Lord.",
+        Verse: "Jeremiah 29:11"
+    },
+    {
+        Quote: "The joy of the Lord is your strength.",
+        Verse: "Nehemiah 8:10"
+    },
+    {
+        Quote: "Be strong and courageous. Do not be afraid.",
+        Verse: "Joshua 1:9"
+    },
+    {
+        Quote: "The steadfast love of the Lord never ceases.",
+        Verse: "Lamentations 3:22"
+    },
+    {
+        Quote: "Cast all your anxiety on Him because He cares for you.",
+        Verse: "1 Peter 5:7"
+    },
+    {
+        Quote: "God is our refuge and strength, an ever-present help in trouble.",
+        Verse: "Psalm 46:1"
+    },
+    {
+        Quote: "With God all things are possible.",
+        Verse: "Matthew 19:26"
+    },
+    {
+        Quote: "Trust in the Lord with all your heart and lean not on your own understanding.",
+        Verse: "Proverbs 3:5"
+    }
+];
+
 
 let randomiser = Math.floor(Math.random() * quoteList.length);
 let randomQuote = quoteList[randomiser].Quote;
@@ -475,17 +593,16 @@ inputQuote.addEventListener("keydown", function(enterQuote){
 
 function bglists(){
     const backgrounds = [
-        'url("https://i.pinimg.com/originals/1f/23/a4/1f23a4d00159d2aac7ec3b0e88cfadc6.jpg")',
         'url("https://wallpapers.com/images/hd/pacific-island-coral-reef-hok73i2u0h6ve3uu.jpg")',
         'url("https://wallpapercave.com/wp/ReDBvXB.jpg")',
-        'url("https://cdn.openart.ai/stable_diffusion/c65b3b130f9ecbdb687b8dd3fef1b3c8e1216013_2000x2000.webp")',
         'url("https://c4.wallpaperflare.com/wallpaper/129/691/612/coral-reef-fish-ocean-water-wallpaper-preview.jpg")',
         'url("https://images6.alphacoders.com/561/thumb-1920-561853.jpg")',
         'url("https://img.freepik.com/free-photo/3d-rendering-cartoon-like-dog_23-2150780984.jpg")',
         'url("https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-936521948.jpg?resize=1200,630")',
         'url("https://wallpapers.com/images/hd/puppy-background-wjo0p1kuhrluyl4w.jpg")',
         'url("https://t3.ftcdn.net/jpg/06/26/16/58/360_F_626165821_8RRKhypLWBlAfrYW5HZ9zCMLJjPumc8r.jpg")',
-        'url("https://wallpapers.com/images/hd/super-cute-rottweiler-puppy-fqgyb2baq1hbms32.jpg")'
+        'url("https://wallpapers.com/images/hd/super-cute-rottweiler-puppy-fqgyb2baq1hbms32.jpg")',
+        'url("https://static.vecteezy.com/system/resources/thumbnails/028/115/207/small_2x/cute-dog-on-pet-themed-background-ai-generative-free-photo.jpg")',
     ]
     randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     screen.style.backgroundImage = randomBg;
