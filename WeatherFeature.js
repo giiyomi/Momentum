@@ -37,16 +37,22 @@ const weatherDetails = async (params) => {
     }
 };
 
-weatherDetails()
 
 const placeNameInput = document.getElementById("place-name-input");
 const inputFormContainer = document.getElementById("input-form-container");
 const dataList = document.getElementById("search-result")
 let timeoutId = null;
 
-placeNameInput.oninput = () => {
+placeNameInput.addEventListener("input", () => {
     if (!placeNameInput.value){
         return dataList.innerHTML = ""
+    }
+
+    const searchResult = JSON.parse(sessionStorage.getItem("searchResult")) || []
+    const [city, state, country] = placeNameInput.value.split(", ")
+    const placeDetails = searchResult.find(item => item.name == city && item.adminName1 == state && item.countryName == country)
+    if (placeDetails) {
+        return
     }
 
     clearTimeout(timeoutId);
@@ -76,20 +82,49 @@ placeNameInput.oninput = () => {
             console.error(error)
         }
     }, 500);
-};
+})
 
+placeNameInput.addEventListener("input" , e => {
+    const searchResult = JSON.parse(sessionStorage.getItem("searchResult")) || []
+    const [city, state, country] = placeNameInput.value.split(", ")
+    const placeDetails = searchResult.find(item => item.name == city && item.adminName1 == state && item.countryName == country) || e.target.value
 
+    dataList.innerHTML = ""
 
-inputFormContainer.onsubmit = async (e) => {
+    console.log(placeDetails)
+    weatherDetails(placeDetails)
+})
+
+inputFormContainer.onsubmit = (e) => {
     e.preventDefault()
     const searchResult = JSON.parse(sessionStorage.getItem("searchResult")) || []
     const [city, state, country] = placeNameInput.value.split(", ")
     const placeDetails = searchResult.find(item => item.name == city && item.adminName1 == state && item.countryName == country) || placeNameInput.value
 
+    dataList.innerHTML = ""
     weatherDetails(placeDetails)
 }
 
-const appContent = (weatherDetails) => {
+const appContent = ( weatherDetails) => {
+    weatherInfoBox.innerHTML = "";
+    const searchResult = JSON.parse(sessionStorage.getItem("searchResult")) || []
+    const [city, state, country] = placeNameInput.value.split(", ")
+    const placeDetails = searchResult.find(item => item.name == city && item.adminName1 == state && item.countryName == country)
+
+    if ( weatherDetails.message === "wrong latitude") {
+
+
+        if(!placeDetails && searchResult.length === 0) {
+            return weatherInfoBox.innerHTML = "The place could not be found."
+        }
+
+        return weatherInfoBox.innerHTML = "Please select a place from the list."        
+    }
+
+    if (placeNameInput.value && placeNameInput.value.length < 3) {
+        return weatherInfoBox.innerHTML = "Please select a place from the list."
+    }
+
     weatherInfoBox.innerHTML = "";
     const weatherHeaderSpan = document.createElement("span")
     weatherHeaderSpan.id = "weather-dtails-span"
@@ -138,3 +173,5 @@ function capitalizeFirstLetter(string) {
     const arrOfStr = string.split(' ')
     return arrOfStr.map(letter => letter.charAt(0).toUpperCase() + letter.slice(1)).join(' ') 
 }
+
+weatherDetails()
