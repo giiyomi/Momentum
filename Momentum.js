@@ -78,7 +78,7 @@ greetingtext.innerText = greetingMeridiem;
 
 center.addEventListener("mouseenter", function(){
 
-    console.log('dumaan dito')
+
     if (editnameClicked === false) {//false yung editnameClicked once na hindi pa naglagay ng name sa greetinginput and pinindot yung enter.
         greetingellipsis.style.display = "none";
     } else {
@@ -285,13 +285,13 @@ todo.addEventListener("mouseenter", function () {
 });
 
 todo.addEventListener("click", function () {
-    if (bubbleTextTodo.style.display == "none") {
+    if (bubbleTextTodo.style.display == "flex") {
+        todoForm.style.display = "none";
+        bubbleTextTodo.style.display = "none";
+    } else {
         todoForm.style.display = "flex";
         bubbleTextTodo.style.display = "flex";
         toolTipText.style.display = "none";
-    } else {
-        todoForm.style.display = "none";
-        bubbleTextTodo.style.display = "none";
     }
 });
 
